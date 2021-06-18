@@ -8,7 +8,7 @@ export default function App() {
   let [categoryProduct, setCategoryProduct] = useState("Todos");
   let [active, setActive] = useState("m-1");
 
-  return (
+  const menuItems = () => (
     <React.Fragment>
       <span className={active === "m-1" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
@@ -27,24 +27,39 @@ export default function App() {
           setCategoryProduct((categoryProduct = "front end"),
             setActive(active = "m-3")
           )}>Back End</span>
-
-      <TransitionGroup component="ul" className="products">
-        {data.products.filter((val) => {
-          if (categoryProduct === "Todos") {
-            return val.category;
-          }
-          else {
-            return val.category === categoryProduct;
-          }
-        }).map((product) => (
-          <CSSTransition key={product.id} timeout={300} classNames="item">
-            <li className="product" key={product.id}>
-              <img className="product-img" alt={product.name} src={product.image} />
-            </li>
-          </CSSTransition>
-        )
-        )}
-      </TransitionGroup>
     </React.Fragment>
+  );
+
+  const items = () => (
+    <TransitionGroup component="ul" className="products">
+      {data.products.filter((val) => {
+        if (categoryProduct === "Todos") {
+          return val.category;
+        }
+        else {
+          return val.category === categoryProduct;
+        }
+      }).map((product) => (
+        <CSSTransition key={product.id} timeout={300} classNames="item">
+          <li className="product" key={product.id}>
+            <img className="product-img" alt={product.name} src={product.image} />
+          </li>
+        </CSSTransition>
+      )
+      )}
+    </TransitionGroup>
+  );
+
+  return (
+    <section id="portfolio-gallery">
+      <div className="container">
+        <div className="menu-items">
+          {menuItems()}
+        </div>
+        <div className="items">
+          {items()}
+        </div>
+      </div>
+    </section>
   );
 };
