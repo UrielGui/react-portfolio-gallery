@@ -18,15 +18,27 @@ export default function App() {
 
       <span className={active === "m-2" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "back end"),
+          setCategoryProduct((categoryProduct = "cars"),
             setActive(active = "m-2")
-          )}>Front End</span>
+          )}>Carros</span>
 
       <span className={active === "m-3" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "front end"),
+          setCategoryProduct((categoryProduct = "models"),
             setActive(active = "m-3")
-          )}>Back End</span>
+          )}>Modelos</span>
+
+      <span className={active === "m-4" ? 'menu-itens menu-active' : 'menu-itens'}
+        onClick={() =>
+          setCategoryProduct((categoryProduct = "party"),
+            setActive(active = "m-4")
+          )}>Eventos</span>
+
+      <span className={active === "m-5" ? 'menu-itens menu-active' : 'menu-itens'}
+        onClick={() =>
+          setCategoryProduct((categoryProduct = "city"),
+            setActive(active = "m-5")
+          )}>Cidade</span>
     </React.Fragment>
   );
 
@@ -41,7 +53,7 @@ export default function App() {
         }
       }).map((product) => (
         <CSSTransition key={product.id} timeout={300} classNames="item">
-          <li className="product" key={product.id}>
+          <li key={product.id}>
             <img className="product-img" alt={product.name} src={product.image} />
           </li>
         </CSSTransition>

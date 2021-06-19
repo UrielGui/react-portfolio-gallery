@@ -1,28 +1,28 @@
-  * {
-      padding: 0px;
-      margin: 0;
-  }
+* {
+  padding: 0px;
+  margin: 0;
+}
 
-  body {
-      background: #333;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-  }
+body {
+  background: #333;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  ul {
-      list-style-type: none;
-    }
+ul {
+  list-style-type: none;
+}
 
-    a { color: inherit; }
+a { color: inherit; }
 
-    .container {
-      padding-right: 2rem;
-      padding-left: 2rem;
-      max-width: 1140px;
-      margin-right: auto;
-      margin-left: auto;
-      
-    }
+.container {
+  padding-right: 2rem;
+  padding-left: 2rem;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  
+}
 
   /* ========  Menu Items ======== */
 
@@ -38,16 +38,16 @@
   }
 
   .menu {
-      padding: 20px;
+    padding: 20px;
   }
 
   .menu-itens {
-      padding: 20px;
-      cursor: pointer;
+    padding: 20px;
+    cursor: pointer;
   }
 
   .menu-active {
-      background: rgb(14, 9, 85);
+    background: rgb(14, 9, 85);
   }
 
   .items {
@@ -56,37 +56,52 @@
   }
 
   .products {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-  }
-
-  .product {
-      transition: all 500ms ease-in-out;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .product-img {
-      width: 245px;
-      height: 270px;
-      padding: 20px;
+    width: 245px;
+    height: 270px;
+    padding: 20px;
+    border-radius: 15%;
   }
 
-  .item-enter {
-      transform: scale3d(0, 0, 0);
-      transition: all 300ms ease-in-out;
-    }
+  .item-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms;
+    animation: openItemAnimation 300ms forwards;
+  }
 
-    .item-enter-active {
-      transform: scale3d(1, 1, 1);
-      transition: all 300ms ease-in-out;
+  @keyframes openItemAnimation {
+    from {
+      width: 0px;
+      height: 0px;
+      padding: 0px;
     }
+    to {
+      padding: 20px;
+      width: 245px;
+      height: 270px;
+    }
+  }
 
-    .item-exit {
-      transform: scale3d(1, 1, 1);
-      transition: all 300ms ease-out;
-    }
+  .item-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+    animation: closeItemAnimation 200ms forwards;
+  }
 
-    .item-exit-active {
-      transform: scale3d(0, 0, 0);
-      transition: all 300ms ease-out;
-    }
+  @keyframes closeItemAnimation {
+  from {
+    width: 245px;
+    height: 270px;
+  }
+  to {
+    width: 0;
+    height: 0;
+  }
+  }
