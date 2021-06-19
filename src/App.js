@@ -5,14 +5,14 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export default function App() {
 
-  let [categoryProduct, setCategoryProduct] = useState("Todos");
+  let [categoryProduct, setCategoryProduct] = useState("all");
   let [active, setActive] = useState("m-1");
 
   const menuItems = () => (
     <React.Fragment>
       <span className={active === "m-1" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "Todos"),
+          setCategoryProduct((categoryProduct = "all"),
             setActive(active = "m-1")
           )}>Todos</span>
 
@@ -45,7 +45,7 @@ export default function App() {
   const items = () => (
     <TransitionGroup component="ul" className="products">
       {data.products.filter((val) => {
-        if (categoryProduct === "Todos") {
+        if (categoryProduct === "all") {
           return val.category;
         }
         else {
@@ -53,7 +53,7 @@ export default function App() {
         }
       }).map((product) => (
         <CSSTransition key={product.id} timeout={300} classNames="item">
-          <li key={product.id}>
+          <li className="product" key={product.id}>
             <img className="product-img" alt={product.name} src={product.image} />
           </li>
         </CSSTransition>
