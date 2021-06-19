@@ -44,7 +44,9 @@ export default function App() {
 
   const items = () => (
     <TransitionGroup component="ul" className="products">
-      {data.products.filter((val) => {
+      {data.products.sort((a, b) =>
+        a.name > b.name ? 1 : -1
+      ).filter((val) => {
         if (categoryProduct === "all") {
           return val.category;
         }
