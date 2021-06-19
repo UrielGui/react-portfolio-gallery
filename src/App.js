@@ -68,9 +68,7 @@ export default function App() {
         <div className="menu-items">
           {menuItems()}
         </div>
-        <div className="items">
-          {items()}
-        </div>
+        {items()}
       </div>
     </section>
   );
