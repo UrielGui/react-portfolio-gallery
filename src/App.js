@@ -86,7 +86,7 @@ export default function App() {
         {categoryQty === 8
           ? <div className="show-more">
             <button onClick={
-              () => setShowMore(showMore + 4)
+              () => { setShowMore(showMore + 4); }
             } className="show-more-button">Mostrar Mais</button>
           </div>
           : null}
