@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import data from './data';
 import './Components/style.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -7,6 +7,15 @@ export default function App() {
 
   let [categoryProduct, setCategoryProduct] = useState("all");
   let [active, setActive] = useState("m-1");
+  let [showMore, setShowMore] = useState(8);
+  let [categoryQty, setCategoryQty] = useState(8);
+
+  const CategoryQtyFunc = (props) => {
+    useEffect(() => {
+      setCategoryQty(categoryQty = props.category);
+    }, []);
+    return null;
+  };
 
   const menuItems = () => (
     <React.Fragment>
@@ -53,13 +62,16 @@ export default function App() {
         else {
           return val.category === categoryProduct;
         }
-      }).slice(0, 8).map((product) => (
-        <CSSTransition key={product.id} timeout={300} classNames="item">
-          <li className="product" key={product.id}>
-            <img className="product-img" alt={product.name} src={product.image} />
-          </li>
-        </CSSTransition>
-      )
+      }).slice(0, showMore).map((product, a, b) => {
+        return (
+          <CSSTransition key={product.id} timeout={300} classNames="item">
+            <li className="product" key={product.id}>
+              <CategoryQtyFunc category={b.length} />
+              <img className="product-img" alt={product.name} src={product.image} />
+            </li>
+          </CSSTransition>
+        );
+      }
       )}
     </TransitionGroup>
   );
@@ -71,6 +83,13 @@ export default function App() {
           {menuItems()}
         </div>
         {items()}
+        {categoryQty === 8
+          ? <div className="show-more">
+            <button onClick={
+              () => setShowMore(showMore + 4)
+            } className="show-more-button">Mostrar Mais</button>
+          </div>
+          : null}
       </div>
     </section>
   );

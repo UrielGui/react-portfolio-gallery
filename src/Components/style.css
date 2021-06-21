@@ -1,6 +1,12 @@
   * {
-    padding: 0px;
-    margin: 0;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      outline: 0;
+  }
+  
+  button {
+      cursor: pointer;
   }
 
   body {
@@ -145,4 +151,19 @@
       transform: scale(0);
       height: 0%;
     }
+  }
+
+  .show-more {
+    display: flex;
+    justify-content: center;
+  }
+
+  .show-more-button {
+    padding: 10px 15px;
+    text-transform: uppercase;
+    border-radius: 10px;
+  }
+
+  .show-more-button:hover {
+    opacity: 0.8;
   }
