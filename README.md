@@ -1,6 +1,6 @@
-# Portfólio Gallery - React
+# Portfolio Gallery - React
 
-![Portfólio Gallery - React](https://i.imgur.com/ArHwajD.png)
+![Portfolio Gallery - React](https://i.imgur.com/ArHwajD.png)
 
 Portfolio gallery with filtering in react.js
 
