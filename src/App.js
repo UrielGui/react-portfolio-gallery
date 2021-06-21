@@ -53,7 +53,7 @@ export default function App() {
         else {
           return val.category === categoryProduct;
         }
-      }).map((product) => (
+      }).slice(0, 8).map((product) => (
         <CSSTransition key={product.id} timeout={300} classNames="item">
           <li className="product" key={product.id}>
             <img className="product-img" alt={product.name} src={product.image} />
