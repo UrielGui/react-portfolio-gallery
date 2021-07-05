@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import data from './data';
-import './Components/style.css';
+import './Styles/style.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export default function App() {
 
-  let [categoryProduct, setCategoryProduct] = useState("all");
-  let [active, setActive] = useState("m-1");
-  let [showMore, setShowMore] = useState(8);
-  let [categoryQty, setCategoryQty] = useState(8);
+  const [productCategory, setproductCategory] = useState("all");
+  const [active, setActive] = useState("m-1");
+  const [showMore, setShowMore] = useState(8);
+  const [categoryQty, setCategoryQty] = useState(8);
 
   const CategoryQtyFunc = (props) => {
     useEffect(() => {
-      setCategoryQty(categoryQty = props.category);
+      setCategoryQty(props.category);
     }, []);
     return null;
   };
@@ -21,32 +21,32 @@ export default function App() {
     <React.Fragment>
       <span className={active === "m-1" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "all"),
-            setActive(active = "m-1")
+          setproductCategory(("all"),
+            setActive("m-1")
           )}>Todos</span>
 
       <span className={active === "m-2" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "cars"),
-            setActive(active = "m-2")
+          setproductCategory(("cars"),
+            setActive("m-2")
           )}>Carros</span>
 
       <span className={active === "m-3" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "models"),
-            setActive(active = "m-3")
+          setproductCategory(("models"),
+            setActive("m-3")
           )}>Modelos</span>
 
       <span className={active === "m-4" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "party"),
-            setActive(active = "m-4")
+          setproductCategory(("party"),
+            setActive("m-4")
           )}>Eventos</span>
 
       <span className={active === "m-5" ? 'menu-itens menu-active' : 'menu-itens'}
         onClick={() =>
-          setCategoryProduct((categoryProduct = "city"),
-            setActive(active = "m-5")
+          setproductCategory(("city"),
+            setActive("m-5")
           )}>Cidade</span>
     </React.Fragment>
   );
@@ -56,11 +56,11 @@ export default function App() {
       {data.products.sort((a, b) =>
         a.name > b.name ? 1 : -1
       ).filter((val) => {
-        if (categoryProduct === "all") {
+        if (productCategory === "all") {
           return val.category;
         }
         else {
-          return val.category === categoryProduct;
+          return val.category === productCategory;
         }
       }).slice(0, showMore).map((product, a, b) => {
         return (
