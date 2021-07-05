@@ -115,21 +115,20 @@
   .item-enter-active {
     opacity: 1;
     transform: scale(1);
-    transition: opacity 300ms;
+    transition: transform ease-in-out;
     animation: openItemAnimation 300ms forwards;
   }
 
   @keyframes openItemAnimation {
     from {
       width: 0%;
-      height: 0%;
       transform: scale(0);
-      padding: 0%;
+      opacity: 0;
     }
     to {
-      padding: 1%;
       width: 100%;
       transform: scale(1);
+      opacity: 1;
     }
   }
 
@@ -144,12 +143,12 @@
     from {
       width: 100%;
       transform: scale(1);
-      padding: 1%;
+      opacity: 1;
     }
     to {
       width: 0%;
       transform: scale(0);
-      height: 0%;
+      opacity: 0;
     }
   }
 
